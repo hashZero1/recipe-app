@@ -19,7 +19,7 @@ export const ApiProvider = ({children}) =>{
     // for random recipe 
     useEffect(() => {
         async function FetchData(){
-            const res = await axios.get(`https://api.spoonacular.com/recipes/random?apiKey=${apike}`)
+            const res = await axios.get(`https://api.spoonacular.com/recipes/random?apiKey=${apikey}`)
             const data = res.data.recipes;
             console.log(res.data.recipes);
             setRandom(data);
@@ -31,7 +31,7 @@ export const ApiProvider = ({children}) =>{
     useEffect(() => {
         async function FetchData(){
             try{
-                const res = await axios.get(`https://api.spoonacular.com/recipes/informationBulk?ids=2,3,4,5,6&apiKey=${apike}`)
+                const res = await axios.get(`https://api.spoonacular.com/recipes/informationBulk?ids=2,3,4,5,6&apiKey=${apikey}`)
                 const data = res.data;
                 console.log(res.data);
                 setBulkRecipe(data);
@@ -47,8 +47,8 @@ const searchRecipe = () => {
             try{
                 const res = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?query=${query}&apiKey=${apikey}`)
                 const data = res.data;
-                console.log(res.data);
-                setSearchData(data);
+                console.log(res.data.results);
+                setSearchData(data.results);
             }catch(e){
                 console.log(e.response.data.message)
             }}
