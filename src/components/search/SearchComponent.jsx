@@ -6,7 +6,7 @@ import SearchResult from "./SearchResult";
 import { recipes } from "./Recipes";
 
 const SearchComponent = () => {
-    const [query, setQuery,searchData, setSearchData,searchRecipe] = useContext(ApiContext)
+    const {query, setQuery,searchData, setSearchData,searchRecipe} = useContext(ApiContext)
 
   const filteredProduct =
     query === ""
@@ -63,7 +63,7 @@ const SearchComponent = () => {
       </div>
     </Combobox>
     <div>
-      <SearchResult searchProduct={searchData} />
+      <SearchResult searchData={searchData} />
     </div>
   </section>
   );
