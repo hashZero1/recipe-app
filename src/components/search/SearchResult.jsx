@@ -1,8 +1,14 @@
-import React from 'react'
-
-const SearchResult = () => {
+const SearchResult = ({searchProduct}) => {
   return (
-    <div>SearchResult</div>
+    <div>
+        {searchProduct?.map(dt => (
+            <div key={dt.id}>
+                <img src={dt.image}/>
+                <li >{dt.title}</li>
+            </div>
+        ))}
+        
+    </div>
   )
 }
 
