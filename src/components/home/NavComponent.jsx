@@ -1,9 +1,9 @@
-import logo1 from '../../assets/logo1.png';
+import logo1 from '../../assets/logo.png';
 
 export default function NavComponent() {
   return (
     <>
-      <nav className="bg-gray-100 p-2">
+      <nav className="lg:w-11/12 mx-auto p-2">
         <div className="py-3 px-6">
           <div className="flex justify-between">
             <div className="flex items-center">
@@ -30,7 +30,7 @@ export default function NavComponent() {
                 </svg>
                 <span className="text-sm font-medium">Favorites</span>
               </div>
-              <div className="ml-2 flex text-red-600 cursor-pointer items-center gap-x-1 rounded-md border-2 border-red-600 py-2 px-4 hover:bg-red-600 hover:text-red-100">
+              <div className="ml-2 flex text-red-600 bg-gray-100 cursor-pointer items-center gap-x-1 rounded-md border-2 border-red-600 py-2 px-4 hover:bg-red-600 hover:text-red-100">
                 <span className="text-sm  font-medium">Sign in</span>
               </div>
             </div>
