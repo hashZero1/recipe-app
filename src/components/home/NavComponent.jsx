@@ -9,9 +9,6 @@ export default function NavComponent() {
             <div className="flex items-center">
               <a className="flex" href="/">
                 <img className=' h-12' src={logo1}/>
-                {/* <span className="ml-2 font-semibold text-[#e6e6e6]">
-                  HealthHub
-                </span> */}
               </a>
             </div>
             <div className="ml-2 flex">
