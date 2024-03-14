@@ -1,6 +1,36 @@
+import { useContext } from "react";
+import { AuthContext } from "../../context/AuthContext";
 import logo1 from '../../assets/logo.png';
+import {
+  createUserDocumentFromAuth,
+  signInWithGooglePopup,
+  signOutUser,
+} from "../../Firebase/Firebase.config";
+import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
+import UserProfile from "./UserProfile";
+
+
 
 export default function NavComponent() {
+  const { currentUser, setCurrentUser } = useContext(AuthContext);
+
+  const signInWithGoogle = async () => {
+    try {
+      const { user } = await signInWithGooglePopup();
+      await createUserDocumentFromAuth(user);
+    } catch (err) {
+      alert("Error! (Login popup closed unexpectedly)");
+      console.log(err)
+    }
+  };
+
+  const signOutHandler = async () => {
+    await signOutUser();
+    setCurrentUser(null);
+  };
+
+
   return (
     <>
       <nav className="lg:w-11/12 mx-auto p-2">
@@ -15,7 +45,7 @@ export default function NavComponent() {
               <div className="flex text-gray-100 cursor-pointer bg-gray-600 items-center gap-x-1 rounded-md py-2 px-4 hover:bg-gray-500">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5"
+                  className="h-4 w-4"
                   viewBox="0 0 20 20"
                   fill="currentColor"
                 >
@@ -27,8 +57,19 @@ export default function NavComponent() {
                 </svg>
                 <span className="text-sm font-medium">Favorites</span>
               </div>
-              <div className="ml-2 flex text-red-600 bg-gray-100 cursor-pointer items-center gap-x-1 rounded-md border-2 border-red-600 py-2 px-4 hover:bg-red-600 hover:text-red-100">
-                <span className="text-sm  font-medium">Sign in</span>
+              <div>
+              {currentUser ? (
+            <UserProfile signOutHandler={signOutHandler} />
+          ) : (
+            <Link
+              onClick={signInWithGoogle}
+              className="px-5 py-4 bg-red-600 text-sm xl:text-base xl:px-10 xl:py-2 rounded-md font-semibold ml-2 flex cursor-pointer items-center gap-x-1 border-red-600  hover:bg-zinc-100 
+              text-gray-200 hover:text-black transition-all"
+              to="/"
+            >
+              SignIn
+            </Link>
+          )}
               </div>
             </div>
           </div>
