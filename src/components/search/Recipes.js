@@ -15,5 +15,8 @@ export const recipes = [
     "biryani",
     "potato",
     "rice",
+    "taco",
+    "rolls",
+    "pancake",
   ];
   
