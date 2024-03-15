@@ -2,7 +2,6 @@ import { useContext, Fragment, useState } from "react";
 import { ApiContext } from "../../context/ApiContext";
 import { Combobox, Transition } from "@headlessui/react";
 import { Link } from "react-router-dom";
-import SearchResult from "./SearchResult";
 import { recipes } from "./Recipes";
 
 const SearchComponent = () => {
@@ -48,13 +47,13 @@ const SearchComponent = () => {
           leaveTo="opacity-0"
           afterLeave={() => setQuery(query)}
         >
-            <Combobox.Options className="mx-12 lg:mx-64 mt-2 w-3/4 text-left absolute ">
-              {filteredProduct.map((data) => (
+            <Combobox.Options className="mx-12 lg:mx-64 z-20 h-60 yes-scrollbar shadow bg-white overflow-y-scroll mt-2 w-3/4 text-left absolute ">
+              {filteredProduct?.map((data) => (
                 <Combobox.Option
                   onChange={() => setSearchData(data)}
                   key={data}
                   className={({ active }) =>
-                    `relative text-lg px-5 py-2 w-4/6 capitalize bg-gray-100 ${
+                    `relative text-lg px-5 py-2 w-4/6 capitalize  ${
                       active
                         ? "bg-red-500 cursor-pointer text-white"
                         : "text-gray-900"
@@ -70,7 +69,6 @@ const SearchComponent = () => {
         </div>
       </Combobox>
       <div>
-        <SearchResult searchProduct={searchData} />
       </div>
     </section>
   );
