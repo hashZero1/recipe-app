@@ -16,7 +16,7 @@ export const ApiProvider = ({children}) =>{
     // for random recipe 
     useEffect(() => {
         async function FetchData(){
-            const res = await axios.get(`https://api.spoonacular.com/recipes/random?apiKey=${apikey}`)
+            const res = await axios.get(`https://api.spoonacular.com/recipes/random?apiKey=${apikey}&number=10`)
             const data = res.data.recipes;
             console.log(res.data.recipes);
             setRandom(data);
@@ -28,9 +28,8 @@ export const ApiProvider = ({children}) =>{
     useEffect(() => {
         async function FetchData(){
             try{
-                const res = await axios.get(`https://api.spoonacular.com/recipes/informationBulk?ids=2,3,4,5,6&apiKey=${apikey}`)
+                const res = await axios.get(`https://api.spoonacular.com/recipes/informationBulk?ids=715,716,766,721,780,777,740&apiKey=${apikey}`)
                 const data = res.data;
-                console.log(res.data);
                 setBulkRecipe(data);
             }catch(e){
                 console.log(e.response.data.message)
@@ -44,8 +43,8 @@ export const ApiProvider = ({children}) =>{
           const response = await axios.get(
             `https://api.spoonacular.com/recipes/complexSearch?query=${searchData}&apiKey=${apikey}`
           );
-          console.log(response.data.results);
-          setSearchData(response.data.results);
+          console.log(response.data);
+          setSearchData(response.data);
         } catch (e) {
           console.log("sorry item is not available");
         }
