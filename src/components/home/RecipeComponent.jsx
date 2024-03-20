@@ -10,16 +10,9 @@ const time = <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24
 </svg>
 
 
-const RecipeComponent = () => {
-    const {bulkRecipe} = useContext(ApiContext);
-
+const RecipeComponent = ({bulkRecipe}) => {
     return (
     <section className='mt-10'>
-        <div className="relative p-20 flex py-5 items-center">
-            <div className="flex-grow border-t border-gray-100"></div>
-            <span className="flex-shrink text-2xl mx-4 text-white">Browse Recipe</span>
-            <div className="flex-grow border-t border-gray-100"></div>
-        </div>
         <div className='flex flex-wrap justify-center'>
         {bulkRecipe?.map(dt => (
              <motion.div whileHover={{ scale: 1.02 }} key={dt.id} className="p-2">
