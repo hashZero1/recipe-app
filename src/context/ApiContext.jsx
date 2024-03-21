@@ -28,7 +28,7 @@ export const ApiProvider = ({children}) =>{
     useEffect(() => {
         async function FetchData(){
             try{
-                const res = await axios.get(`https://api.spoonacular.com/recipes/informationBulk?ids=715,716,766,721,780,777,740&apiKey=${apikey}`)
+                const res = await axios.get(`https://api.spoonacular.com/recipes/informationBulk?ids=715,716,766,721,780,777,453,343,65665,5456,740&apiKey=${apikey}`)
                 const data = res.data;
                 setBulkRecipe(data);
             }catch(e){
