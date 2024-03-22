@@ -31,7 +31,9 @@ const RecipeComponent = ({bulkRecipe}) => {
                  <p className="my-5 h-10  overflow-y-auto no-scrollbar font-normal text-gray-700 dark:text-gray-600">{time} {dt.readyInMinutes} minutes
                  </p>
                  <div className="mx-3 my-2 pt-6 border-t-2 border-black border-opacity-20 flex justify-between ">
-                   <p className="text-lg h-10 capitalize text-gray-800">{dt.diets[0]}, {dt.diets[1]}</p>
+                   <p className="text-lg h-10 capitalize text-gray-800">
+                    {dt.diets[0]}<br/> 
+                    {dt.diets[1]}</p>
                    <button
                      className="px-4 py-1 bg-red-600 text-white font-semibold hover:bg-gray-800 hover:text-white transition-all rounded-lg"
                    >
