@@ -57,7 +57,7 @@ export default function NavComponent() {
                 </svg>
                 <span className="text-sm font-medium">Favorites</span>
               </div>
-              <div>
+   
               {currentUser ? (
             <UserProfile signOutHandler={signOutHandler} />
           ) : (
@@ -70,7 +70,7 @@ export default function NavComponent() {
               SignIn
             </Link>
           )}
-              </div>
+           
             </div>
           </div>
         </div>
