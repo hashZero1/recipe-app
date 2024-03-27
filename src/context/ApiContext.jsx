@@ -1,5 +1,5 @@
 import { createContext,useState, useEffect } from "react"
-import axios from "axios"
+import axios from "axios";
 
 const apikey = import.meta.env.VITE_API_KEY;
 
@@ -13,16 +13,18 @@ export const ApiProvider = ({children}) =>{
     const [bulkRecipe, setBulkRecipe] = useState()
 
 
-    // for random recipe 
+    //for random recipe 
     useEffect(() => {
         async function FetchData(){
-            const res = await axios.get(`https://api.spoonacular.com/recipes/random?apiKey=${apikey}&number=10`)
-            const data = res.data.recipes;
-            console.log(res.data.recipes);
-            setRandom(data);
-        }
-        FetchData();
-    },[])
+            try{
+                const res = await axios.get(`https://api.spoonacular.com/recipes/random?apiKey=${apikey}&number=10`)
+                const data = res.data;
+                setRandom(data.recipes);
+            }catch(e){
+                console.log(e.response.data.message)
+            }}
+            FetchData();
+        },[])
 
     // for home screen recipe 
     useEffect(() => {
@@ -43,7 +45,7 @@ export const ApiProvider = ({children}) =>{
           const response = await axios.get(
             `https://api.spoonacular.com/recipes/complexSearch?query=${searchData}&apiKey=${apikey}`
           );
-          console.log(response.data);
+          
           setSearchData(response.data);
         } catch (e) {
           console.log("sorry item is not available");
