@@ -1,8 +1,11 @@
 import { Drawer } from "vaul";
 
 export default function DetailsPageComponent({recipe}) {
-  const anslyzedIns = (recipe.analyzedInstructions[0]?.steps)
-
+  const nameless = () => {
+    const anslyzedIns = (recipe.analyzedInstructions[0]?.steps)
+      return anslyzedIns?.map(dt => <li key={dt.number}>{dt.step}</li>)
+  }
+  
   return (
     <Drawer.Root shouldScaleBackground>
       <Drawer.Trigger asChild>
@@ -42,11 +45,11 @@ export default function DetailsPageComponent({recipe}) {
                 <h2 className="font-semibold mb-2 text-2xl text-zinc-600 mt-8">
                 Instructions :
                 </h2>
-                <p className="text-lg">{recipe.instructions}</p>
+                <p className="text-lg">{!recipe.instructions? "Not Available": recipe.instructions } </p>
                 <h3 className="mb-2 text-zinc-600 mt-8 text-xl font-semibold">
                 Step by Steps Intructions :
                 </h3>     
-                <p className="text-lg"> {anslyzedIns?.map(dt => <li key={dt.number}>{dt.step}</li>)}</p>
+                <p className="text-lg">{!recipe.analyzedInstructions? "Not Available": nameless()} </p>
                 </div>
                            
               </div>
