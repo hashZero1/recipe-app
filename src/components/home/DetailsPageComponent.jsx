@@ -13,26 +13,26 @@ export default function DetailsPageComponent({recipe}) {
       </Drawer.Trigger>
       <Drawer.Portal>
         <Drawer.Overlay className="fixed inset-0 bg-black/40" />
-          <Drawer.Content className="bg-zinc-100 flex flex-col rounded-t-[10px] h-[96%] mt-24 fixed bottom-0 left-0 right-0">
-            <div className="p-4 bg-white overflow-y-scroll no-scrollbar rounded-t-[10px] flex-1">
+          <Drawer.Content className="bg-zinc-100 text-gray-700 flex flex-col rounded-t-[10px] h-[96%] mt-24 fixed bottom-0 left-0 right-0">
+            <div className="pt-2 lg:p-4 bg-white overflow-y-scroll no-scrollbar rounded-t-[10px] flex-1">
               <div className="mx-auto w-14 h-1.5 flex-shrink-0 rounded-full bg-zinc-300 mb-8" />
-              <div className="flex flex-col bg-gray-100 w-11/12 justify-center p-10 mx-auto rounded-t-[20px]">
-                <Drawer.Title className="font-bold text-2xl lg:text-4xl mb-5  bg-white rounded-[12px]  p-4">
+              <div className="flex flex-col bg-gray-100 w-11/12 justify-center p-4 lg:p-10 mx-auto rounded-t-[10px]">
+                <Drawer.Title className="font-bold text-xl lg:text-4xl mb-5  bg-white rounded-[12px]  p-4">
                   {recipe.title}
                 </Drawer.Title>
                 <div className="flex flex-col lg:flex-row justify-between lg:text-lg lg:w-3/5">
-                  <img className="rounded-[12px]" src={recipe.image} alt={recipe.title}/>
+                  <img className="rounded-[10px]" src={recipe.image} alt={recipe.title}/>
                   <div className="my-4 lg:my-0">
-                  <b className="text-zinc-600 mt-5">
+                  <b className=" mt-5">
                   Total servings 
                 </b>
-                <p className=" ">{recipe.servings}</p>
+                <p>{recipe.servings}</p>
                   </div>
-                 <div>
-                 <b className="text-zinc-600 mt-5 capitalize">
+                 <div className="capitalize">
+                 <b>
                 DishTypes 
                 </b>
-                <p className="capitalize">
+                <p>
                   {recipe.dishTypes[0]}<br/> 
                   {recipe.dishTypes[1]}<br/> 
                   {recipe.dishTypes[2]}<br/> 
@@ -41,19 +41,20 @@ export default function DetailsPageComponent({recipe}) {
                  </div>
               
                 </div>
-                <div className=" lg:w-5/6">
-                <h2 className="font-semibold mb-2 text-2xl text-zinc-600 mt-8">
+                <div className="lg:w-5/6">
+                <h2 className="font-semibold mb-2 text-xl lg:text-2xl mt-5 lg:mt-8">
                 Instructions :
                 </h2>
-                <p className="text-lg">{!recipe.instructions? "Not Available": recipe.instructions } </p>
-                <h3 className="mb-2 text-zinc-600 mt-8 text-xl font-semibold">
+                <p className=" leading-relaxed tracking-wide lg:text-lg">{!recipe.instructions? "Not Available": recipe.instructions } </p>
+                <h3 className="mb-2  mt-8 text-lg lg:text-xl font-semibold">
                 Step by Steps Intructions :
                 </h3>     
-                <p className="text-lg">{!recipe.analyzedInstructions? "Not Available": nameless()} </p>
-                </div>
-                           
+                <p className="leading-relaxed tracking-wide lg:text-lg">{!recipe.analyzedInstructions? "Not Available": nameless()} </p>
+                </div>         
               </div>
+              <div className="mx-auto w-40 h-1.5 flex-shrink-0 rounded-full bg-zinc-300  my-2" />
             </div>
+            
             {/* <div className="p-4 bg-zinc-100 border-t border-zinc-200 mt-auto">
               <div className="flex gap-6 justify-end max-w-md mx-auto">
                 <a
