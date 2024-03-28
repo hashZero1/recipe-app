@@ -32,7 +32,7 @@ export default function NavComponent() {
 
   return (
     <>
-      <nav className="lg:w-11/12 mx-auto lg:p-2">
+      <nav className="lg:w-11/12 pt-2 mx-auto lg:p-2">
         <div className="py-2 px-3 lg:py-3 lg:px-6">
           <div className="flex justify-between">
             <div className="flex items-center">
