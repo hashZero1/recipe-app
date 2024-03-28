@@ -6,13 +6,13 @@ import { recipes } from "./Recipes";
 
 const SearchComponent = () => {
     const {searchData, setSearchData,searchRecipe} = useContext(ApiContext);
-    const [query, setQuery] = useState('');
+    const [query, setQuery] = useState("");
 
   const filteredProduct =
     query === ""
       ? recipes
-      : recipes.filter((person) => {
-          return person.toLowerCase().includes(query.toLowerCase());
+      : recipes.filter((recipe) => {
+          return recipe.toLowerCase().includes(query.toLowerCase());
         }
       );
 
@@ -23,12 +23,15 @@ const SearchComponent = () => {
 
   return (
   <section className="mt-24">
-    <h1 className="text-center text-5xl text-white font-bold uppercase m-5">Hey there! 👀</h1>
-    <h2 className="text-center text-3xl text-white mb-12">What are you planning on making today? 😋</h2>
+    <div>
+    <h1 className="text-center text-4xl lg:text-5xl text-white font-bold uppercase m-5">Hey there! 👀</h1>
+    <h2 className="text-center text-2xl lg:text-3xl text-white mb-12">What are you planning on making today? 😋</h2>
+    </div>
+    <div>
     <Combobox value={searchData} onChange={setSearchData}>
       <div className="text-center mt-6 relative">
         <Combobox.Input
-        className="px-6 py-5 lg:px-5 lg:py-7 w-3/4 lg:w-4/6 text-xl lg:text-2xl tracking-wide bg-white rounded-tl-lg rounded-bl-lg "
+        className="px-4 py-2 lg:px-5 lg:py-3 w-[72%] lg:w-4/6 text-lg lg:text-2xl bg-white rounded-tl-lg rounded-bl-lg"
         placeholder="Search Recipe..."
         displayValue={query}
         onChange={handleChange}
@@ -36,7 +39,7 @@ const SearchComponent = () => {
         <Link
         onClick={() => searchRecipe()}
         to={`/search/:${searchData}`}
-        className="px-4 py-5 lg:px-8 lg:py-7 text-xl bg-red-600 text-white font-semibold hover:bg-gray-800 hover:text-white lg:text-2xl tracking-wide rounded-tr-lg rounded-br-lg "
+        className="px-3 py-[11px] lg:px-5 lg:py-3 text-lg bg-red-600 text-white font-semibold hover:bg-gray-800 hover:text-white lg:text-2xl rounded-tr-lg rounded-br-lg "
         >
           Search
         </Link>
@@ -47,13 +50,13 @@ const SearchComponent = () => {
           leaveTo="opacity-0"
           afterLeave={() => setQuery(query)}
         >
-            <Combobox.Options className="mx-12 lg:mx-64 z-20 h-60 yes-scrollbar shadow bg-white overflow-y-scroll mt-2 w-3/4 text-left absolute ">
+            <Combobox.Options className="mx-3 lg:mx-64 z-20 h-60 yes-scrollbar shadow bg-white overflow-y-scroll mt-2 w-[70%] md:w-3/5 lg:w-3/4 text-left absolute ">
               {filteredProduct?.map((data) => (
                 <Combobox.Option
                   onChange={() => setSearchData(data)}
                   key={data}
                   className={({ active }) =>
-                    `relative text-lg px-5 py-2 w-4/6 capitalize  ${
+                    `relative text-md lg:text-lg px-5 py-2 w-4/6 capitalize  ${
                       active
                         ? "bg-red-500 cursor-pointer text-white"
                         : "text-gray-900"
@@ -69,6 +72,7 @@ const SearchComponent = () => {
         </div>
       </Combobox>
       <div>
+      </div>
       </div>
     </section>
   );
