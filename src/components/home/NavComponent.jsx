@@ -6,7 +6,6 @@ import {
   signInWithGooglePopup,
   signOutUser,
 } from "../../Firebase/Firebase.config";
-import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import UserProfile from "./UserProfile";
 
@@ -33,19 +32,19 @@ export default function NavComponent() {
 
   return (
     <>
-      <nav className="lg:w-11/12 mx-auto p-2">
-        <div className="py-3 px-6">
+      <nav className="lg:w-11/12 mx-auto lg:p-2">
+        <div className="py-2 px-3 lg:py-3 lg:px-6">
           <div className="flex justify-between">
             <div className="flex items-center">
-              <a className="flex" href="/">
-                <img className=' h-12' src={logo1}/>
+              <a href="/">
+                <img className='h-9 rounded-sm lg:h-12' src={logo1}/>
               </a>
             </div>
-            <div className="ml-2 flex">
-              <div className="flex text-gray-100 cursor-pointer bg-gray-600 items-center gap-x-1 rounded-md py-2 px-4 hover:bg-gray-500">
+            <div className="ml-2 flex h-9 lg:h-12">
+              <div className="flex text-gray-100 cursor-pointer bg-gray-700 items-center rounded-md px-2 lg:py-2 lg:px-4 hover:bg-gray-500">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-4 w-4"
+                  className="h-5 w-5"
                   viewBox="0 0 20 20"
                   fill="currentColor"
                 >
@@ -55,7 +54,7 @@ export default function NavComponent() {
                     clipRule="evenodd"
                   />
                 </svg>
-                <span className="text-sm font-medium">Favorites</span>
+                {/* <span className="text-sm font-medium">Favorites</span> */}
               </div>
    
               {currentUser ? (
@@ -63,7 +62,7 @@ export default function NavComponent() {
           ) : (
             <Link
               onClick={signInWithGoogle}
-              className="px-5 py-4 bg-red-600 text-sm xl:text-base xl:px-10 xl:py-2 rounded-md font-semibold ml-2 flex cursor-pointer items-center gap-x-1 border-red-600  hover:bg-zinc-100 
+              className="px-2 lg:px-5 lg:py-4 bg-red-600 text-sm xl:text-base xl:px-10 xl:py-2 rounded-md font-semibold ml-2 flex cursor-pointer items-center gap-x-1 border-red-600  hover:bg-zinc-100 
               text-gray-200 hover:text-black transition-all"
               to="/"
             >
