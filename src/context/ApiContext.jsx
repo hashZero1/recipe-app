@@ -43,9 +43,9 @@ export const ApiProvider = ({children}) =>{
     const searchRecipe = async () => {
         try {
           const response = await axios.get(
-            `https://api.spoonacular.com/recipes/complexSearch?query=${searchData}&apiKey=${apikey}`
-          );
-          
+            `https://api.spoonacular.com/recipes/complexSearch?query=${searchData}&apiKey=${apikey}&addRecipeInformation=true`
+          );  
+          console.log(response.data)
           setSearchData(response.data);
         } catch (e) {
           console.log("sorry item is not available");
