@@ -2,6 +2,9 @@ import { motion } from "framer-motion";
 import { ApiContext } from "../../context/ApiContext";
 import { useContext } from "react";
 import DetailsPageComponent from "../home/DetailsPageComponent";
+import NavComponent from "../home/NavComponent";
+import SearchComponent from "./SearchComponent";
+import FooterComponent from "../home/FooterComponent";
 
 const time = <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 inline-block">
 <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
@@ -11,7 +14,9 @@ const SearchResult = () => {
   const {searchData} = useContext(ApiContext);
   console.log(searchData)
   return (
-    <section className="flex flex-wrap justify-center">
+    <div className="bg-[conic-gradient(at_top,_var(--tw-gradient-stops))] from-red-500 via-red-400 to-gray-100">
+    <NavComponent/>
+    <div className="flex flex-wrap justify-center mt-10">
     {searchData.results?.map((dt) => (
       <motion.div whileHover={{ scale: 1.02 }} key={dt.id} className="p-2">
       <div className="max-w-[20rem] m-2 lg:m-0 2xl:m-2 bg-opacity-50 bg-white rounded-lg shadow ">
@@ -42,7 +47,9 @@ const SearchResult = () => {
       </div>
     </motion.div>
     ))}
-    </section>
+    </div>
+    <FooterComponent/>
+    </div>
   );
 };
 
