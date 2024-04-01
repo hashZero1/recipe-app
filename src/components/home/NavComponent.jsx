@@ -1,5 +1,7 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
+import { CartContext } from "../../context/CartContext";
+import { motion } from "framer-motion";
 import logo1 from '../../assets/logo.png';
 import {
   createUserDocumentFromAuth,
@@ -8,11 +10,14 @@ import {
 } from "../../Firebase/Firebase.config";
 import { Link } from "react-router-dom";
 import UserProfile from "./UserProfile";
+import { Cart } from "./CartComponent";
 
 
 
 export default function NavComponent() {
   const { currentUser, setCurrentUser } = useContext(AuthContext);
+  const [toggle, setToggle] = useState(true);
+  const { cartItems } = useContext(CartContext);
 
   const signInWithGoogle = async () => {
     try {
@@ -32,7 +37,7 @@ export default function NavComponent() {
 
   return (
     <>
-      <nav className="lg:w-11/12 pt-2 mx-auto lg:p-2">
+      <nav className="lg:w-11/12 pt-4 mx-auto lg:p-2">
         <div className="py-2 px-3 lg:py-3 lg:px-6">
           <div className="flex justify-between">
             <div className="flex items-center">
@@ -41,10 +46,22 @@ export default function NavComponent() {
               </a>
             </div>
             <div className="ml-2 flex h-9 lg:h-12">
-              <div className="flex text-gray-100 cursor-pointer bg-gray-700 items-center rounded-md px-2 lg:py-2 lg:px-4 hover:bg-gray-500">
+              <div className={`${
+                  cartItems.length
+                    ? " bg-white"
+                    : "ring-2 ring-gray-800 ring-inset"
+                } flex px-2 rounded-lg cursor-pointer items-center hover:text-red-600 hover:ring-0 hover:bg-white`}>
+              {toggle ? (
+              <motion.div
+                initial={{ opacity: 0, x: 200 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: 200 }}
+                onClick={() => setToggle(!toggle)}
+                
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5"
+                  className="h-5 w-5 "
                   viewBox="0 0 20 20"
                   fill="currentColor"
                 >
@@ -54,6 +71,14 @@ export default function NavComponent() {
                     clipRule="evenodd"
                   />
                 </svg>
+                {/* <span className="font-bold  mt-[5px] xl:mt-2 text-lg xl:text-xl cursor- ">
+                  {cartItems.length}
+                </span> */}
+              </motion.div>
+            ) : (
+              <Cart toggle={toggle} handleToggle={setToggle} />
+            )}
+               
                 {/* <span className="text-sm font-medium">Favorites</span> */}
               </div>
    
