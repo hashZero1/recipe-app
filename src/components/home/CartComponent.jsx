@@ -8,6 +8,7 @@ export const Cart = ({ toggle, handleToggle }) => {
   const { cartItems, deleteItemCart, addItemToCart, removeItemToCart } =
     useContext(CartContext);
   const { currentUser } = useContext(AuthContext);
+  console.log(cartItems)
   return (
     <m.aside
       initial={{ opacity: 0, x: 200 }}
@@ -38,13 +39,12 @@ export const Cart = ({ toggle, handleToggle }) => {
             <div className="mt-10 text-xl" key={uuid()}>
               <h1 className="p-2 mt-2 font-semibold text-xl">
                 {currentUser ? (
-                  <h1 className="text-2xl">{currentUser.displayName}</h1>
+                  <h1 className="text-2xl">Hi, {currentUser.displayName} 👀</h1>
                 ) : null}
-                Your StoreX-11 Cart is empty.
+                Your list is empty.
               </h1>
               <p className="p-2">
-                Your shopping cart is waiting. Give it purpose – fill it with
-                groceries, clothing, household supplies, electronics and more.
+                Your favourite recipe is waiting. Hurry up – and start saving your favourite recipes, So you can enjoy making it later.
               </p>
             </div>
           ) : (
@@ -57,50 +57,51 @@ export const Cart = ({ toggle, handleToggle }) => {
                 const totalPrice = price * quantity;
 
                 return (
-                  <div
-                    className="flex flex-col mx-2 my-4 p-2 bg-red-200 shadow-md rounded-xl"
-                    key={id}
-                  >
-                    <div className="flex">
-                      <div className="m-4 w-64 object-contain">
-                        <img
-                          className="w-full rounded-xl object-fill"
-                          src={images[0]}
-                          alt={images}
-                        />
-                      </div>
-                      <div className="mt-5 w-72">
-                        <h3 className="mb-2 text-xl font-semibold">{title}</h3>
-                        <p className="mb-1">Eligible for FREE Shipping</p>
-                        <b>₹{totalPrice}</b>
-                      </div>
-                    </div>
-                    <div className="m-4 flex justify-evenly">
-                      <div className="flex flex-row bg-red-600 rounded-xl ">
-                        <button
-                          onClick={() => addItemToCart(item)}
-                          className=" bg-red-600 text-white hover:text-red-700 hover:bg-gray-100 w-12 rounded-l cursor-pointer"
-                        >
-                          <span className="m-auto text-2xl font-thin">+</span>
-                        </button>
-                        <span className="py-2 px-5 text-black font-semibold  bg-white">
-                          {quantity}
-                        </span>
-                        <button
-                          onClick={() => removeItemToCart(item)}
-                          className="bg-red-600 text-white hover:text-red-700 hover:bg-gray-100 w-12 rounded-r cursor-pointer"
-                        >
-                          <span className="m-auto text-2xl font-thin">-</span>
-                        </button>
-                      </div>
-                      <button
-                        onClick={() => deleteItemCart(item)}
-                        className="px-5 bg-black text-white font-semibold hover:bg-gray-100 hover:text-black rounded-xl"
-                      >
-                        Delete
-                      </button>
-                    </div>
-                  </div>
+                  <h1 key={id}>{title}</h1>
+                  // <div
+                  //   className="flex flex-col mx-2 my-4 p-2 bg-red-200 shadow-md rounded-xl"
+                  //   key={id}
+                  // >
+                  //   <div className="flex">
+                  //     <div className="m-4 w-64 object-contain">
+                  //       <img
+                  //         className="w-full rounded-xl object-fill"
+                  //         src={images[0]}
+                  //         alt={images}
+                  //       />
+                  //     </div>
+                  //     <div className="mt-5 w-72">
+                  //       <h3 className="mb-2 text-xl font-semibold">{title}</h3>
+                  //       <p className="mb-1">Eligible for FREE Shipping</p>
+                  //       <b>₹{totalPrice}</b>
+                  //     </div>
+                  //   </div>
+                  //   <div className="m-4 flex justify-evenly">
+                  //     <div className="flex flex-row bg-red-600 rounded-xl ">
+                  //       <button
+                  //         onClick={() => addItemToCart(item)}
+                  //         className=" bg-red-600 text-white hover:text-red-700 hover:bg-gray-100 w-12 rounded-l cursor-pointer"
+                  //       >
+                  //         <span className="m-auto text-2xl font-thin">+</span>
+                  //       </button>
+                  //       <span className="py-2 px-5 text-black font-semibold  bg-white">
+                  //         {quantity}
+                  //       </span>
+                  //       <button
+                  //         onClick={() => removeItemToCart(item)}
+                  //         className="bg-red-600 text-white hover:text-red-700 hover:bg-gray-100 w-12 rounded-r cursor-pointer"
+                  //       >
+                  //         <span className="m-auto text-2xl font-thin">-</span>
+                  //       </button>
+                  //     </div>
+                  //     <button
+                  //       onClick={() => deleteItemCart(item)}
+                  //       className="px-5 bg-black text-white font-semibold hover:bg-gray-100 hover:text-black rounded-xl"
+                  //     >
+                  //       Delete
+                  //     </button>
+                  //   </div>
+                  // </div>
                 );
               })}
             </div>
