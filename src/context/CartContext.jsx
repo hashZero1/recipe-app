@@ -67,10 +67,17 @@ export const CartProvider = ({ children }) => {
   }, [cartItems]);
 
   //for toast notification
-  const notify = (statement) => {
-    toast.success("Item added to Cart !", {
-      position: toast.POSITION.BOTTOM_CENTER,
-    });
+  const notify = () => {
+    toast('🥧 Recipe added to your favourites!', {
+      position: "bottom-center",
+      autoClose: 2000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+      });
   };
 
   //adding or removing item to cart using helper function
