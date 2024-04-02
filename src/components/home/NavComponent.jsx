@@ -50,7 +50,7 @@ export default function NavComponent() {
                   cartItems.length
                     ? " bg-white"
                     : "ring-2 ring-gray-800 ring-inset"
-                } flex px-2 rounded-lg cursor-pointer items-center hover:text-red-600 hover:ring-0 hover:bg-white`}>
+                } flex  rounded-lg cursor-pointer items-center hover:text-red-600 hover:ring-0 hover:bg-white`}>
               {toggle ? (
               <motion.div
                 initial={{ opacity: 0, x: 200 }}
@@ -61,7 +61,7 @@ export default function NavComponent() {
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5 "
+                  className="h-5 w-5 m-2"
                   viewBox="0 0 20 20"
                   fill="currentColor"
                 >
