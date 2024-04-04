@@ -9,11 +9,11 @@ export default function DetailsPageComponent({recipe}) {
   return (
     <Drawer.Root shouldScaleBackground>
       <Drawer.Trigger asChild>
-        <button>Details</button>
+        <button className="border-0 hover:border-0">Details</button>
       </Drawer.Trigger>
       <Drawer.Portal>
         <Drawer.Overlay className="fixed inset-0 bg-black/40" />
-          <Drawer.Content className="bg-zinc-100 text-gray-700 flex flex-col rounded-t-[10px] h-[96%] mt-24 fixed bottom-0 left-0 right-0">
+          <Drawer.Content className="bg-zinc-100 z-30 text-gray-700 flex flex-col rounded-t-[10px] h-[96%] mt-24 fixed bottom-0 left-0 right-0">
             <div className="pt-2 lg:p-4 bg-white overflow-y-scroll no-scrollbar rounded-t-[10px] flex-1">
               <div className="mx-auto w-14 h-1.5 flex-shrink-0 rounded-full bg-zinc-300 mb-8" />
               <div className="flex flex-col bg-gray-100 w-11/12 justify-center p-4 lg:p-10 mx-auto rounded-t-[10px]">
