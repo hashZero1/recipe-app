@@ -50,9 +50,10 @@ export default function NavComponent() {
                   cartItems.length
                     ? " bg-white"
                     : "ring-2 ring-gray-800 ring-inset"
-                } flex  rounded-lg cursor-pointer items-center hover:text-red-600 hover:ring-0 hover:bg-white`}>
+                } flex rounded-lg cursor-pointer `}>
               {toggle ? (
               <motion.div
+              className="items-center hover:rounded-lg hover:text-red-600 hover:ring-0 hover:bg-white"
                 initial={{ opacity: 0, x: 200 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: 200 }}
