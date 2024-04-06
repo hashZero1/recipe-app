@@ -14,7 +14,7 @@ const RecipeComponent = ({bulkRecipe}) => {
   const { addItemToCart, notify } = useContext(CartContext);
 
     return (
-    <section className='mt-10'>
+    <section className='mt-5'>
         <div className='flex flex-wrap justify-center'>
         {bulkRecipe?.map(dt => (
              <motion.div whileHover={{ scale: 1.02 }} key={dt.id} className="p-2">
@@ -63,7 +63,7 @@ const RecipeComponent = ({bulkRecipe}) => {
              </div>
            </motion.div>
         ))}
-         <ToastContainer/>
+         <ToastContainer />
         </div>  
     </section>
   )
