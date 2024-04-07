@@ -8,7 +8,7 @@ export default function UserProfile({ signOutHandler }) {
 
   const reload = () => window.location.reload();
   return (
-    <div className="bg-opacity-40  bg-white ml-2 rounded-md hover:bg-slate-50">
+    <div className="bg-opacity-40 bg-white ml-2 lg:ml-4 rounded-md hover:bg-slate-50">
       <Dropdown inline label={<Avatar className="h-0 md:h-4 lg:w-10 lg:h-7" img={currentUser.photoURL} rounded />}>
         <Dropdown.Header>
           <span className="block text-gray-600 text-sm font-semibold">
