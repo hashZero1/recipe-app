@@ -36,7 +36,7 @@ export default function NavComponent() {
 
 
   return (
-    <>
+
       <nav className="lg:w-11/12 pt-4 mx-auto lg:p-2">
         <div className="py-2 px-3 lg:py-3 lg:px-6">
           <div className="flex justify-between">
@@ -50,10 +50,10 @@ export default function NavComponent() {
                   cartItems.length
                     ? " bg-white"
                     : "ring-2 ring-gray-800 ring-inset"
-                } flex rounded-lg cursor-pointer `}>
+                } flex rounded-lg cursor-pointer items-center  `}>
               {toggle ? (
               <motion.div
-              className="items-center hover:rounded-lg hover:text-red-600 hover:ring-0 hover:bg-white"
+              className="lg:py-1 hover:rounded-lg hover:text-red-600 hover:ring-0 hover:bg-white"
                 initial={{ opacity: 0, x: 200 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: 200 }}
@@ -62,7 +62,7 @@ export default function NavComponent() {
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5 m-2"
+                  className="h-5 w-5 lg:h-6 lg:w-6 m-2"
                   viewBox="0 0 20 20"
                   fill="currentColor"
                 >
@@ -72,15 +72,10 @@ export default function NavComponent() {
                     clipRule="evenodd"
                   />
                 </svg>
-                {/* <span className="font-bold  mt-[5px] xl:mt-2 text-lg xl:text-xl cursor- ">
-                  {cartItems.length}
-                </span> */}
               </motion.div>
             ) : (
               <Cart toggle={toggle} handleToggle={setToggle} />
             )}
-               
-                {/* <span className="text-sm font-medium">Favorites</span> */}
               </div>
    
               {currentUser ? (
@@ -100,6 +95,5 @@ export default function NavComponent() {
           </div>
         </div>
       </nav>
-    </>
   );
 }
