@@ -63,7 +63,7 @@ return (
         >
           Search
         </Link>
-      <Combobox.Options className="absolute left-8 lg:left-[16.5em] text-left top-12 lg:top-[4em] h-80 overflow-y-scroll no-scrollbar z-40">
+      <Combobox.Options className="absolute left-4 lg:left-[16.5em] text-left top-12 lg:top-[4em] h-80 overflow-y-scroll no-scrollbar z-40">
         {query !== "" && (
           <Combobox.Option
           onChange={() => setSearchData(query)}
@@ -90,7 +90,7 @@ return (
               onChange={() => setSearchData(recipe)}
               value={recipe}
               className={({ active }) =>
-              `relative min-w-[20em] lg:min-w-[40em] text-md bg-gray-100 lg:text-lg px-5 py-2 capitalize  ${
+              `relative min-w-[18.4em] lg:min-w-[40em] text-md bg-gray-100 lg:text-lg px-5 py-2 capitalize  ${
                 active
                   ? "bg-red-500 cursor-pointer text-white"
                   : "text-gray-900"
