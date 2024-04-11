@@ -2,6 +2,7 @@ import FooterComponent from './FooterComponent';
 import SearchComponent from '../search/SearchComponent';
 import NavComponent from './NavComponent';
 import TrendingSection from './TrendingSection';
+import RandomizedRecipe from './RandomizedRecipe';
 
 const HomeComponent = () => {
  
@@ -10,6 +11,7 @@ const HomeComponent = () => {
     <NavComponent/>
     <SearchComponent/>
     <TrendingSection/>
+    <RandomizedRecipe/>
     <FooterComponent/>
     </main>
   )
