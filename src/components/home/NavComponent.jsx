@@ -2,7 +2,6 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { CartContext } from "../../context/CartContext";
 import { motion } from "framer-motion";
-import logo1 from '../../assets/logo.png';
 import {
   createUserDocumentFromAuth,
   signInWithGooglePopup,
@@ -11,10 +10,13 @@ import {
 import { Link } from "react-router-dom";
 import UserProfile from "./UserProfile";
 import { Cart } from "./CartComponent";
-
+import {Cloudinary} from "@cloudinary/url-gen";
+import {AdvancedImage , placeholder, responsive} from '@cloudinary/react';
+import {fill} from "@cloudinary/url-gen/actions/resize";
 
 
 export default function NavComponent() {
+  const cld = new Cloudinary({cloud: {cloudName: 'db4mlhacn'}});
   const { currentUser, setCurrentUser } = useContext(AuthContext);
   const [toggle, setToggle] = useState(true);
   const { cartItems } = useContext(CartContext);
@@ -34,16 +36,21 @@ export default function NavComponent() {
     setCurrentUser(null);
   };
 
+   // Instantiate a CloudinaryImage object for the image with the public ID, 'docs/models'.
+   const myImage = cld.image('p76amr7g04b8ocwdgaqo'); 
+
+   // Resize to 250 x 250 pixels using the 'fill' crop mode.
+   myImage.resize(fill().width(500));
 
   return (
 
       <nav className="lg:w-11/12 pt-4 mx-auto lg:p-2">
         <div className="py-2 px-3 lg:py-3 lg:px-6">
           <div className="flex justify-between">
-            <div className="flex items-center">
-              <a href="/">
-                <img className='h-9 rounded-sm lg:h-12' src={logo1}/>
-              </a>
+            <div className="flex items-center ">
+            <div className="w-[7.7em] h-[36px] lg:w-[10em] lg:h-[48px]">
+    <AdvancedImage className="w-full h-full" cldImg={myImage} plugins={[responsive(), placeholder()]}></AdvancedImage>
+</div>
             </div>
             <div className="ml-2 flex h-9 lg:h-12">
               <div className={`${
