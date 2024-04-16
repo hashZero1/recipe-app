@@ -48,9 +48,9 @@ export default function NavComponent() {
         <div className="py-2 px-3 lg:py-3 lg:px-6">
           <div className="flex justify-between">
             <div className="flex items-center ">
-            <div className="w-[7.7em] h-[36px] lg:w-[10em] lg:h-[48px]">
+            <a href="/" className=" cursor-pointer w-[7.7em] h-[36px] lg:w-[10em] lg:h-[48px]">
     <AdvancedImage className="w-full h-full" cldImg={myImage} plugins={[responsive(), placeholder()]}></AdvancedImage>
-</div>
+</a>
             </div>
             <div className="ml-2 flex h-9 lg:h-12">
               <div className={`${
